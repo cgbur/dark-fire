@@ -2,7 +2,7 @@
   "name": "pale-fire-variants",
   "displayName": "Pale Fire Variants",
   "description": "A self-contained Pale Fire theme generator with VS Code, Ghostty, and web outputs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "cgbur",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
@@ -46,7 +46,7 @@
         "path": "./themes/vscode/pale-fire-color-theme.json"
       },
       {
-        "label": "Pale Fire 02 - High Contrast",
+        "label": "Pale Fire 02 - Original High Contrast",
         "uiTheme": "vs-dark",
         "path": "./themes/vscode/pale-fire-high-contrast-color-theme.json"
       },
@@ -56,22 +56,27 @@
         "path": "./themes/vscode/pale-fire-stealth-color-theme.json"
       },
       {
-        "label": "Pale Fire 04 - Darker",
+        "label": "Pale Fire 04 - Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vscode/pale-fire-dark-color-theme.json"
+      },
+      {
+        "label": "Pale Fire 05 - Darker",
         "uiTheme": "vs-dark",
         "path": "./themes/vscode/pale-fire-darker-color-theme.json"
       },
       {
-        "label": "Pale Fire 05 - Deep Dark",
+        "label": "Pale Fire 06 - Deep Dark",
         "uiTheme": "vs-dark",
         "path": "./themes/vscode/pale-fire-deep-dark-color-theme.json"
       },
       {
-        "label": "Pale Fire 06 - Near Black",
+        "label": "Pale Fire 07 - Near Black",
         "uiTheme": "vs-dark",
         "path": "./themes/vscode/pale-fire-near-black-color-theme.json"
       },
       {
-        "label": "Pale Fire 07 - Full Black",
+        "label": "Pale Fire 08 - Full Black",
         "uiTheme": "vs-dark",
         "path": "./themes/vscode/pale-fire-full-black-color-theme.json"
       }

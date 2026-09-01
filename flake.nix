@@ -22,6 +22,7 @@
               nodejs_22
               jq
               zip
+              gnuplot
             ];
           };
         });

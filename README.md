@@ -6,6 +6,8 @@ This project is based on [matklad's Pale Fire](https://github.com/matklad/pale-f
 
 The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
 
+One goal of this project is to make the darker end of Pale Fire feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. This project adds more closely spaced dark options and generates every target from the same palette so VS Code, Ghostty, and the web stay visually aligned.
+
 ## Install
 
 ### VS Code
@@ -28,14 +30,14 @@ cp /path/to/extracted-themes/* "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes
 Add a theme to `${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config.ghostty`:
 
 ```ini
-theme = Pale Fire 06 - Near Black
+theme = Pale Fire 07 - Near Black
 ```
 
 Reload Ghostty's configuration or restart Ghostty. See the [Ghostty configuration documentation](https://ghostty.org/docs/config) for alternative config locations.
 
 ### Web
 
-The generated `themes/web/pale-fire.css` exposes every palette as CSS custom properties. Add a variant to any container without changing the rest of the page:
+Download `pale-fire-web-themes-*.zip` from the [latest release](https://github.com/cgbur/pale-fire/releases/latest) and extract `pale-fire.css`. The stylesheet exposes every palette as CSS custom properties. Add a variant to any container without changing the rest of the page:
 
 ```html
 <link rel="stylesheet" href="pale-fire.css" />
@@ -52,16 +54,29 @@ The names sort from lightest background to darkest:
 | Variant | Editor background | Character |
 | --- | --- | --- |
 | Pale Fire 01 - Original | `#404040` | The original palette |
-| Pale Fire 02 - High Contrast | `#383838` | Stronger contrast |
+| Pale Fire 02 - Original High Contrast | `#383838` | The original palette with stronger contrast |
 | Pale Fire 03 - Stealth | `#262626` | Muted contrast |
-| Pale Fire 04 - Darker | `#161616` | Upstream's darker variant |
-| Pale Fire 05 - Deep Dark | `#0E0E0E` | Between Darker and Near Black |
-| Pale Fire 06 - Near Black | `#070707` | Almost black with subtle depth |
-| Pale Fire 07 - Full Black | `#000000` | Black primary surfaces with visible borders |
+| Pale Fire 04 - Dark | `#1C1C1C` | A small step above Darker |
+| Pale Fire 05 - Darker | `#161616` | Upstream's darker variant |
+| Pale Fire 06 - Deep Dark | `#0E0E0E` | Between Darker and Near Black |
+| Pale Fire 07 - Near Black | `#070707` | Almost black with subtle depth |
+| Pale Fire 08 - Full Black | `#000000` | Black primary surfaces with visible borders |
+
+### Perceptual background spacing
+
+The plot compares the generated backgrounds using CIE L*, a practical perceived-lightness guide for neutral SDR colors, and the OKLab L coordinate used by the palette generator. Exact near-black perception still depends on the display, ambient light, and visual adaptation.
+
+![Perceptual lightness of the Pale Fire variant backgrounds](./docs/assets/background-lightness.png)
+
+Regenerate the image from its [gnuplot source](./docs/assets/background-lightness.gnuplot):
+
+```sh
+nix develop --command gnuplot docs/assets/background-lightness.gnuplot
+```
 
 ## Development
 
-Run `direnv allow` to enter the Nix development shell automatically, or use `nix develop` directly. The shell provides Zig, Node.js, `jq`, and `zip`.
+Run `direnv allow` to enter the Nix development shell automatically, or use `nix develop` directly. The shell provides Zig, Node.js, `jq`, `zip`, and gnuplot.
 
 ```sh
 zig build run -- generate
