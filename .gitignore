@@ -1,0 +1,7 @@
+/.direnv/
+/.zig-cache/
+/node_modules/
+/themes/
+/zig-out/
+/*.vsix
+/.DS_Store

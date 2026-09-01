@@ -1,0 +1,14 @@
+.{
+    .name = .pale_fire,
+    .version = "0.1.0",
+    .fingerprint = 0xdd1d41ef040e9a74,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE",
+        "README.md",
+    },
+}
