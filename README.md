@@ -1,12 +1,43 @@
 # Pale Fire Variants
 
-A small, self-contained Zig theme generator based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
+Pale Fire themes for VS Code and Ghostty, generated from one small Zig color engine.
 
-The goal is simple: keep a reusable color engine in one place, then output Pale Fire everywhere else. The palette and OKLCH conversion are the core; VS Code and Ghostty are small backends. Adding another target should only require mapping the core colors into that target's format.
+This project is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
+
+The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
+
+## Install
+
+### VS Code
+
+Download the `.vsix` file from the [latest release](https://github.com/cgbur/pale-fire/releases/latest). In VS Code, open the Command Palette, run **Extensions: Install from VSIX...**, and choose the downloaded file.
+
+Then run **Preferences: Color Theme** and choose a Pale Fire variant. To update later, download and install the newer VSIX.
+
+Marketplace publication is deferred and tracked in [issue #1](https://github.com/cgbur/pale-fire/issues/1).
+
+### Ghostty
+
+Download `pale-fire-ghostty-themes-*.zip` from the [latest release](https://github.com/cgbur/pale-fire/releases/latest) and extract it with your archive application. Copy the extracted files into Ghostty's theme directory:
+
+```sh
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
+cp /path/to/extracted-themes/* "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes/"
+```
+
+Add a theme to `${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config.ghostty`:
+
+```ini
+theme = Pale Fire 06 - Near Black
+```
+
+Reload Ghostty's configuration or restart Ghostty. See the [Ghostty configuration documentation](https://ghostty.org/docs/config) for alternative config locations.
 
 ## Variants
 
-| Variant | VS Code editor background | Character |
+The names sort from lightest background to darkest:
+
+| Variant | Editor background | Character |
 | --- | --- | --- |
 | Pale Fire 01 - Original | `#404040` | The original palette |
 | Pale Fire 02 - High Contrast | `#383838` | Stronger contrast |
@@ -16,11 +47,9 @@ The goal is simple: keep a reusable color engine in one place, then output Pale 
 | Pale Fire 06 - Near Black | `#070707` | Almost black with subtle depth |
 | Pale Fire 07 - Full Black | `#000000` | Black primary surfaces with visible borders |
 
-Every variant is generated for both VS Code and Ghostty under `themes/`. Generated themes and VSIX packages are intentionally not committed; the Zig source is the source of truth.
+## Development
 
-## Generate
-
-With `direnv allow`, the Nix development shell provides Zig, Node.js, and `jq`. You can also enter it directly with `nix develop`.
+Run `direnv allow` to enter the Nix development shell automatically, or use `nix develop` directly. The shell provides Zig, Node.js, `jq`, and `zip`.
 
 ```sh
 zig build run -- generate
@@ -28,62 +57,43 @@ zig build run -- check
 zig build test
 ```
 
+The generator writes every variant to `themes/vscode/` and `themes/ghostty/`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
+
 List variants with `zig build run -- list`, or generate one with `zig build run -- generate --variant near-black`.
 
-## VS Code
-
-The theme registration is the `contributes.themes` section in [`package.json`](./package.json); a theme-only extension needs no runtime extension code.
-
-Build and install a local VSIX:
+To package the VS Code themes locally:
 
 ```sh
-npm install
+npm ci
 npm run package:vscode
-code --install-extension pale-fire-variants-0.1.0.vsix
 ```
 
-The VS Code packager runs the Zig generator automatically before building the VSIX.
-
-Then choose a Pale Fire variant from **Preferences: Color Theme**.
-
-To publish, first create a VS Code Marketplace publisher whose ID matches the `publisher` field in `package.json`, then follow the [official publishing guide](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) and run `npm run publish:vscode`.
-
-## Releases
-
-Each GitHub release includes three generated downloads:
-
-- an installable VSIX containing every VS Code variant;
-- a ZIP of the individual VS Code theme files;
-- a ZIP of the individual Ghostty theme files.
-
-To make a release, update the version in `package.json`, `package-lock.json`, and `build.zig.zon`, commit it, then push the matching version tag:
-
-```sh
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-The release workflow verifies that the tag matches `package.json`, runs the checks, regenerates every theme, and publishes the downloads. Generated artifacts remain out of the regular Git history.
-
-## Ghostty
-
-Copy the generated files into Ghostty's user theme directory:
-
-```sh
-zig build run -- generate
-mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
-cp themes/ghostty/* "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes/"
-```
-
-Then select one in the Ghostty configuration, for example:
-
-```ini
-theme = Pale Fire 06 - Near Black
-```
+The VS Code package is registered through `contributes.themes` in [`package.json`](./package.json) and needs no runtime extension code.
 
 ## Adding a backend
 
-Use [`src/palette.zig`](./src/palette.zig) as the color engine, add a renderer beside [`src/ghostty.zig`](./src/ghostty.zig) and [`src/vscode.zig`](./src/vscode.zig), then call it from the generation loop in [`src/main.zig`](./src/main.zig). Backends should contain formatting and target-specific mappings, not independent palettes.
+Keep palette decisions in [`src/palette.zig`](./src/palette.zig) and target-specific formatting in the backend. [`src/ghostty.zig`](./src/ghostty.zig) is the smallest example. A backend exposes:
+
+```zig
+pub fn render(allocator: std.mem.Allocator, variant: palette.Variant) ![]u8
+```
+
+The caller owns the returned buffer. Use `variant.palette` for colors and `variant.slug` or `variant.label` for names. Use `background()` and `surface()` for surfaces so the Full Black variant remains truly black.
+
+To wire it in:
+
+1. Import the backend in [`src/main.zig`](./src/main.zig) and create its `themes/<target>/` output directory.
+2. Extend `processVariant` to render and either write or check the backend's file. Derive its filename from the slug or label, or add a field to `palette.Variant` when the target needs a special name.
+3. Add a focused renderer test, then run:
+
+```sh
+zig fmt --check build.zig src
+zig build test
+zig build run -- generate
+zig build run -- check
+```
+
+If the backend should be downloadable, also bundle `themes/<target>/` in [the release workflow](./.github/workflows/release.yml) and add its installation instructions here.
 
 ## License
 
