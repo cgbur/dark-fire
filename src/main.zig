@@ -2,6 +2,7 @@ const std = @import("std");
 const ghostty = @import("ghostty.zig");
 const palette = @import("palette.zig");
 const vscode = @import("vscode.zig");
+const web = @import("web.zig");
 
 const Command = enum { generate, check, list, help };
 
@@ -75,10 +76,12 @@ fn parseArgs(args: []const []const u8) !Options {
 fn generate(io: std.Io, allocator: std.mem.Allocator, options: Options, check: bool) !void {
     const vscode_dir = try std.fs.path.join(allocator, &.{ options.output_dir, "vscode" });
     const ghostty_dir = try std.fs.path.join(allocator, &.{ options.output_dir, "ghostty" });
+    const web_dir = try std.fs.path.join(allocator, &.{ options.output_dir, "web" });
 
     if (!check) {
         try std.Io.Dir.cwd().createDirPath(io, vscode_dir);
         try std.Io.Dir.cwd().createDirPath(io, ghostty_dir);
+        if (options.variant == null) try std.Io.Dir.cwd().createDirPath(io, web_dir);
     }
 
     if (options.variant) |variant| {
@@ -87,6 +90,21 @@ fn generate(io: std.Io, allocator: std.mem.Allocator, options: Options, check: b
         for (palette.variants) |variant| {
             try processVariant(io, allocator, vscode_dir, ghostty_dir, variant, check);
         }
+        try processWeb(io, allocator, web_dir, check);
+    }
+}
+
+fn processWeb(io: std.Io, allocator: std.mem.Allocator, output_dir: []const u8, check: bool) !void {
+    const content = try web.render(allocator, &palette.variants);
+    defer allocator.free(content);
+    const path = try std.fs.path.join(allocator, &.{ output_dir, "pale-fire.css" });
+    defer allocator.free(path);
+
+    if (check) {
+        try checkFile(io, allocator, path, content);
+    } else {
+        try std.Io.Dir.cwd().writeFile(io, .{ .sub_path = path, .data = content });
+        std.debug.print("generated web stylesheet\n", .{});
     }
 }
 

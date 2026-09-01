@@ -1,6 +1,6 @@
 # Pale Fire Variants
 
-Pale Fire themes for VS Code and Ghostty, generated from one small Zig color engine.
+Pale Fire themes for VS Code, Ghostty, and the web, generated from one small Zig color engine.
 
 This project is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
 
@@ -33,6 +33,18 @@ theme = Pale Fire 06 - Near Black
 
 Reload Ghostty's configuration or restart Ghostty. See the [Ghostty configuration documentation](https://ghostty.org/docs/config) for alternative config locations.
 
+### Web
+
+The generated `themes/web/pale-fire.css` exposes every palette as CSS custom properties. Add a variant to any container without changing the rest of the page:
+
+```html
+<link rel="stylesheet" href="pale-fire.css" />
+
+<article data-pale-fire-theme="near-black">
+  <!-- Use --pf-background, --pf-foreground, and the other --pf-* colors here. -->
+</article>
+```
+
 ## Variants
 
 The names sort from lightest background to darkest:
@@ -57,7 +69,7 @@ zig build run -- check
 zig build test
 ```
 
-The generator writes every variant to `themes/vscode/` and `themes/ghostty/`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
+The generator writes every variant to `themes/vscode/` and `themes/ghostty/`, plus one portable stylesheet at `themes/web/pale-fire.css`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
 
 List variants with `zig build run -- list`, or generate one with `zig build run -- generate --variant near-black`.
 

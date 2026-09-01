@@ -1,7 +1,7 @@
 {
   "name": "pale-fire-variants",
   "displayName": "Pale Fire Variants",
-  "description": "A self-contained Pale Fire theme generator with VS Code and Ghostty outputs",
+  "description": "A self-contained Pale Fire theme generator with VS Code, Ghostty, and web outputs",
   "version": "0.1.0",
   "publisher": "cgbur",
   "private": true,
@@ -26,7 +26,8 @@
     "zenburn",
     "dark",
     "full-black",
-    "ghostty"
+    "ghostty",
+    "css"
   ],
   "scripts": {
     "check": "zig fmt --check build.zig src && zig build test",

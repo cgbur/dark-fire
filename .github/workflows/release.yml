@@ -36,6 +36,7 @@ jobs:
         run: |
           nix develop --command zip -j "pale-fire-vscode-themes-${GITHUB_REF_NAME}.zip" themes/vscode/*
           nix develop --command zip -j "pale-fire-ghostty-themes-${GITHUB_REF_NAME}.zip" themes/ghostty/*
+          nix develop --command zip -j "pale-fire-web-themes-${GITHUB_REF_NAME}.zip" themes/web/*
 
       - name: Publish GitHub release
         env:
@@ -45,6 +46,7 @@ jobs:
             pale-fire-variants-*.vsix \
             "pale-fire-vscode-themes-${GITHUB_REF_NAME}.zip" \
             "pale-fire-ghostty-themes-${GITHUB_REF_NAME}.zip" \
+            "pale-fire-web-themes-${GITHUB_REF_NAME}.zip" \
             --verify-tag \
             --generate-notes \
             --title "Pale Fire ${GITHUB_REF_NAME}"

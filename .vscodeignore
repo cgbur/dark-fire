@@ -4,4 +4,6 @@
 .zig-cache/**
 node_modules/**
 zig-out/**
+themes/ghostty/**
+themes/web/**
 *.vsix
