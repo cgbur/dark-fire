@@ -21,6 +21,7 @@
               zig
               nodejs_22
               jq
+              zip
             ];
           };
         });

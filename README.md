@@ -48,6 +48,23 @@ Then choose a Pale Fire variant from **Preferences: Color Theme**.
 
 To publish, first create a VS Code Marketplace publisher whose ID matches the `publisher` field in `package.json`, then follow the [official publishing guide](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) and run `npm run publish:vscode`.
 
+## Releases
+
+Each GitHub release includes three generated downloads:
+
+- an installable VSIX containing every VS Code variant;
+- a ZIP of the individual VS Code theme files;
+- a ZIP of the individual Ghostty theme files.
+
+To make a release, update the version in `package.json`, `package-lock.json`, and `build.zig.zon`, commit it, then push the matching version tag:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The release workflow verifies that the tag matches `package.json`, runs the checks, regenerates every theme, and publishes the downloads. Generated artifacts remain out of the regular Git history.
+
 ## Ghostty
 
 Copy the generated files into Ghostty's user theme directory:
