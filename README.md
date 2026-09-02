@@ -1,5 +1,11 @@
 # [Dark Fire](https://cgbur.com/dark-fire/)
 
+<p align="center">
+  <a href="https://cgbur.com/dark-fire/">
+    <img src="./docs/assets/dark-fire-logo.png" alt="Dark Fire" width="560">
+  </a>
+</p>
+
 Dark Fire is a family of themes generated from one small Zig color engine.
 
 Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs).
