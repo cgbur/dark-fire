@@ -1,14 +1,14 @@
-# Dark Fire
+# [Dark Fire](https://cgbur.com/dark-fire/)
 
-Dark Fire themes for VS Code, Ghostty, and the web, generated from one small Zig color engine.
+Dark Fire is a family of themes generated from one small Zig color engine.
 
 Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs).
 
 The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
 
-Try all eight variants in the [interactive preview](https://cgbur.com/dark-fire/), then read about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
+Explore the current variants in the [interactive preview](https://cgbur.com/dark-fire/), then read about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
 
-One goal of this project is to make the darker end of the Pale Fire palette feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. Dark Fire adds more closely spaced dark options and generates every target from the same palette so VS Code, Ghostty, and the web stay visually aligned.
+One goal of this project is to make the darker end of the Pale Fire palette feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. Dark Fire adds more closely spaced dark options and generates every target from the same palette so the results stay visually aligned.
 
 ## Install
 
@@ -86,7 +86,7 @@ zig build run -- check
 zig build test
 ```
 
-The generator writes every variant to `themes/vscode/` and `themes/ghostty/`, plus one portable stylesheet at `themes/web/dark-fire.css`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
+The generator writes each variant to backend-specific directories under `themes/`. Generated themes and packages are not committed; the Zig source is the source of truth.
 
 List variants with `zig build run -- list`, or generate one with `zig build run -- generate --variant near-black`.
 
