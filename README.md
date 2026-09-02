@@ -6,15 +6,11 @@
   </a>
 </p>
 
-Dark Fire is a family of themes generated from one small Zig color engine.
+Dark Fire is a family of themes generated from one small Zig color engine. It is a fork of [matklad's Pale Fire](https://github.com/matklad/pale-fire), itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The palette lives in one place, with backends responsible only for translating it into their target formats.
 
-Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs).
+The project focuses on making the darker end of the palette more deliberate. Pale Fire leaves some large perceptual jumps between backgrounds, and the same darkness does not feel right in every editor or terminal. Dark Fire fills those gaps with more closely spaced options while keeping every output visually related.
 
-The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
-
-Explore the current variants in the [interactive preview](https://cgbur.com/dark-fire/), then read about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
-
-One goal of this project is to make the darker end of the Pale Fire palette feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. Dark Fire adds more closely spaced dark options and generates every target from the same palette so the results stay visually aligned.
+Explore the current variants in the [interactive preview](https://cgbur.com/dark-fire/), or read more about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
 
 ## Install
 
