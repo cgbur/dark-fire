@@ -2,7 +2,7 @@
 
 Dark Fire themes for VS Code, Ghostty, and the web, generated from one small Zig color engine.
 
-Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
+Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs).
 
 The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
 
