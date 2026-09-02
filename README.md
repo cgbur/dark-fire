@@ -1,4 +1,4 @@
-# [Dark Fire](https://cgbur.com/dark-fire/)
+# Dark Fire
 
 <p align="center">
   <a href="https://cgbur.com/dark-fire/">
@@ -6,11 +6,19 @@
   </a>
 </p>
 
-Dark Fire is a family of themes generated from one small Zig color engine. It is a fork of [matklad's Pale Fire](https://github.com/matklad/pale-fire), itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The palette lives in one place, with backends responsible only for translating it into their target formats.
+Dark Fire is a family of themes generated from one small Zig color engine. The palette lives in one place, with backends responsible only for translating it into their target formats. The primary goal is more control over the darker end of the palette. The same darkness does not feel right in every application, so Dark Fire has smaller steps between shades while keeping the colors consistent.
 
-The project focuses on making the darker end of the palette more deliberate. Pale Fire leaves some large perceptual jumps between backgrounds, and the same darkness does not feel right in every editor or terminal. Dark Fire fills those gaps with more closely spaced options while keeping every output visually related.
+<h2 align="center">
+  <a href="https://cgbur.com/dark-fire/">Explore the interactive theme viewer</a>
+</h2>
 
-Explore the current variants in the [interactive preview](https://cgbur.com/dark-fire/), or read more about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
+<p align="center">
+  <a href="https://cgbur.com/dark-fire/">
+    <img src="./docs/assets/theme-preview.png" alt="Dark Fire interactive terminal theme preview" width="900">
+  </a>
+</p>
+
+Read more about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
 
 ## Install
 
@@ -55,28 +63,16 @@ Download `dark-fire-web-themes-*.zip` from the [latest release](https://github.c
 
 The names sort from lightest background to darkest:
 
-| Variant | Editor background | Character |
-| --- | --- | --- |
-| Dark Fire 01 - Original | `#404040` | The original palette |
-| Dark Fire 02 - Original High Contrast | `#383838` | The original palette with stronger contrast |
-| Dark Fire 03 - Stealth | `#262626` | Muted contrast |
-| Dark Fire 04 - Dark | `#1C1C1C` | A small step above Darker |
-| Dark Fire 05 - Darker | `#161616` | Upstream's darker variant |
-| Dark Fire 06 - Deep Dark | `#0E0E0E` | Between Darker and Near Black |
-| Dark Fire 07 - Near Black | `#070707` | Almost black with subtle depth |
-| Dark Fire 08 - Full Black | `#000000` | Black primary surfaces with visible borders |
-
-### Perceptual background spacing
-
-The plot compares the generated backgrounds using CIE L*, a practical perceived-lightness guide for neutral SDR colors, and the OKLab L coordinate used by the palette generator. Exact near-black perception still depends on the display, ambient light, and visual adaptation.
-
-![Perceptual lightness of the Dark Fire variant backgrounds](./docs/assets/background-lightness.png)
-
-Regenerate the image from its [gnuplot source](./docs/assets/background-lightness.gnuplot):
-
-```sh
-nix develop --command gnuplot docs/assets/background-lightness.gnuplot
-```
+| Variant                               | Editor background | Character                                   |
+| ------------------------------------- | ----------------- | ------------------------------------------- |
+| Dark Fire 01 - Original               | `#404040`         | The original palette                        |
+| Dark Fire 02 - Original High Contrast | `#383838`         | The original palette with stronger contrast |
+| Dark Fire 03 - Stealth                | `#262626`         | Muted contrast                              |
+| Dark Fire 04 - Dark                   | `#1C1C1C`         | A small step above Darker                   |
+| Dark Fire 05 - Darker                 | `#161616`         | Upstream's darker variant                   |
+| Dark Fire 06 - Deep Dark              | `#0E0E0E`         | Between Darker and Near Black               |
+| Dark Fire 07 - Near Black             | `#070707`         | Almost black with subtle depth              |
+| Dark Fire 08 - Full Black             | `#000000`         | Black primary surfaces with visible borders |
 
 ## Development
 
@@ -126,6 +122,10 @@ zig build run -- check
 
 If the backend should be downloadable, also bundle `themes/<target>/` in [the release workflow](./.github/workflows/release.yml) and add its installation instructions here.
 
+## Lineage
+
+Dark Fire is a fork of [matklad's Pale Fire](https://github.com/matklad/pale-fire), itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs).
+
 ## License
 
-GPLv3, like [the original Pale Fire](https://github.com/matklad/pale-fire). See [`LICENSE`](./LICENSE).
+GPLv3, following its upstream projects. See [`LICENSE`](./LICENSE).
