@@ -1,26 +1,26 @@
-# Pale Fire Variants
+# Dark Fire
 
-Pale Fire themes for VS Code, Ghostty, and the web, generated from one small Zig color engine.
+Dark Fire themes for VS Code, Ghostty, and the web, generated from one small Zig color engine.
 
-This project is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
+Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire), which is itself based on [Zenburn for Emacs](https://github.com/bbatsov/zenburn-emacs). The Near Black and Full Black variants were inspired by [Dark+ (Full Black)](https://github.com/DhruvDh/dark-plus-full-black).
 
 The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
 
-One goal of this project is to make the darker end of Pale Fire feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. This project adds more closely spaced dark options and generates every target from the same palette so VS Code, Ghostty, and the web stay visually aligned.
+One goal of this project is to make the darker end of the Pale Fire palette feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. Dark Fire adds more closely spaced dark options and generates every target from the same palette so VS Code, Ghostty, and the web stay visually aligned.
 
 ## Install
 
 ### VS Code
 
-Download the `.vsix` file from the [latest release](https://github.com/cgbur/pale-fire/releases/latest). In VS Code, open the Command Palette, run **Extensions: Install from VSIX...**, and choose the downloaded file.
+Download the `.vsix` file from the [latest release](https://github.com/cgbur/dark-fire/releases/latest). In VS Code, open the Command Palette, run **Extensions: Install from VSIX...**, and choose the downloaded file.
 
-Then run **Preferences: Color Theme** and choose a Pale Fire variant. To update later, download and install the newer VSIX.
+Then run **Preferences: Color Theme** and choose a Dark Fire variant. To update later, download and install the newer VSIX.
 
-Marketplace publication is deferred and tracked in [issue #1](https://github.com/cgbur/pale-fire/issues/1).
+Marketplace publication is deferred and tracked in [the Marketplace issue](https://github.com/cgbur/dark-fire/issues/1).
 
 ### Ghostty
 
-Download `pale-fire-ghostty-themes-*.zip` from the [latest release](https://github.com/cgbur/pale-fire/releases/latest) and extract it with your archive application. Copy the extracted files into Ghostty's theme directory:
+Download `dark-fire-ghostty-themes-*.zip` from the [latest release](https://github.com/cgbur/dark-fire/releases/latest) and extract it with your archive application. Copy the extracted files into Ghostty's theme directory:
 
 ```sh
 mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes"
@@ -30,20 +30,20 @@ cp /path/to/extracted-themes/* "${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/themes
 Add a theme to `${XDG_CONFIG_HOME:-$HOME/.config}/ghostty/config.ghostty`:
 
 ```ini
-theme = Pale Fire 07 - Near Black
+theme = Dark Fire 07 - Near Black
 ```
 
 Reload Ghostty's configuration or restart Ghostty. See the [Ghostty configuration documentation](https://ghostty.org/docs/config) for alternative config locations.
 
 ### Web
 
-Download `pale-fire-web-themes-*.zip` from the [latest release](https://github.com/cgbur/pale-fire/releases/latest) and extract `pale-fire.css`. The stylesheet exposes every palette as CSS custom properties. Add a variant to any container without changing the rest of the page:
+Download `dark-fire-web-themes-*.zip` from the [latest release](https://github.com/cgbur/dark-fire/releases/latest) and extract `dark-fire.css`. The stylesheet exposes every palette as CSS custom properties. Add a variant to any container without changing the rest of the page:
 
 ```html
-<link rel="stylesheet" href="pale-fire.css" />
+<link rel="stylesheet" href="dark-fire.css" />
 
-<article data-pale-fire-theme="near-black">
-  <!-- Use --pf-background, --pf-foreground, and the other --pf-* colors here. -->
+<article data-dark-fire-theme="near-black">
+  <!-- Use --df-background, --df-foreground, and the other --df-* colors here. -->
 </article>
 ```
 
@@ -53,20 +53,20 @@ The names sort from lightest background to darkest:
 
 | Variant | Editor background | Character |
 | --- | --- | --- |
-| Pale Fire 01 - Original | `#404040` | The original palette |
-| Pale Fire 02 - Original High Contrast | `#383838` | The original palette with stronger contrast |
-| Pale Fire 03 - Stealth | `#262626` | Muted contrast |
-| Pale Fire 04 - Dark | `#1C1C1C` | A small step above Darker |
-| Pale Fire 05 - Darker | `#161616` | Upstream's darker variant |
-| Pale Fire 06 - Deep Dark | `#0E0E0E` | Between Darker and Near Black |
-| Pale Fire 07 - Near Black | `#070707` | Almost black with subtle depth |
-| Pale Fire 08 - Full Black | `#000000` | Black primary surfaces with visible borders |
+| Dark Fire 01 - Original | `#404040` | The original palette |
+| Dark Fire 02 - Original High Contrast | `#383838` | The original palette with stronger contrast |
+| Dark Fire 03 - Stealth | `#262626` | Muted contrast |
+| Dark Fire 04 - Dark | `#1C1C1C` | A small step above Darker |
+| Dark Fire 05 - Darker | `#161616` | Upstream's darker variant |
+| Dark Fire 06 - Deep Dark | `#0E0E0E` | Between Darker and Near Black |
+| Dark Fire 07 - Near Black | `#070707` | Almost black with subtle depth |
+| Dark Fire 08 - Full Black | `#000000` | Black primary surfaces with visible borders |
 
 ### Perceptual background spacing
 
 The plot compares the generated backgrounds using CIE L*, a practical perceived-lightness guide for neutral SDR colors, and the OKLab L coordinate used by the palette generator. Exact near-black perception still depends on the display, ambient light, and visual adaptation.
 
-![Perceptual lightness of the Pale Fire variant backgrounds](./docs/assets/background-lightness.png)
+![Perceptual lightness of the Dark Fire variant backgrounds](./docs/assets/background-lightness.png)
 
 Regenerate the image from its [gnuplot source](./docs/assets/background-lightness.gnuplot):
 
@@ -84,7 +84,7 @@ zig build run -- check
 zig build test
 ```
 
-The generator writes every variant to `themes/vscode/` and `themes/ghostty/`, plus one portable stylesheet at `themes/web/pale-fire.css`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
+The generator writes every variant to `themes/vscode/` and `themes/ghostty/`, plus one portable stylesheet at `themes/web/dark-fire.css`. Generated themes and VSIX files are not committed; the Zig source is the source of truth.
 
 List variants with `zig build run -- list`, or generate one with `zig build run -- generate --variant near-black`.
 

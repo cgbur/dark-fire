@@ -1,5 +1,5 @@
 {
-  description = "Pale Fire theme generator and outputs";
+  description = "Dark Fire theme generator and outputs";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 

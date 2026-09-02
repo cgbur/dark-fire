@@ -7,7 +7,7 @@
 set terminal pngcairo size 1700,1000 enhanced font "DejaVu Sans,18" background rgb "#161616"
 set output "docs/assets/background-lightness.png"
 
-set title "Pale Fire background lightness" font ",29" textcolor rgb "#EFEFE7" offset 0,1.3
+set title "Dark Fire background lightness" font ",29" textcolor rgb "#EFEFE7" offset 0,1.3
 set label 100 "CIE L* is the practical spacing guide; OKLab L × 100 is the generator's current lightness coordinate." at screen 0.5,0.815 center font ",15" textcolor rgb "#B7D4EB"
 set xlabel "Generated background color" offset 0,-1.7 textcolor rgb "#EFEFE7"
 set ylabel "Perceptual lightness score (0 = black)" offset -1.4,0 textcolor rgb "#EFEFE7"

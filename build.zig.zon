@@ -1,7 +1,7 @@
 .{
-    .name = .pale_fire,
-    .version = "0.1.0",
-    .fingerprint = 0xdd1d41ef040e9a74,
+    .name = .dark_fire,
+    .version = "0.3.0",
+    .fingerprint = 0x21dad4710f39cd0e,
     .minimum_zig_version = "0.16.0",
     .dependencies = .{},
     .paths = .{

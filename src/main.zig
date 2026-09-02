@@ -97,7 +97,7 @@ fn generate(io: std.Io, allocator: std.mem.Allocator, options: Options, check: b
 fn processWeb(io: std.Io, allocator: std.mem.Allocator, output_dir: []const u8, check: bool) !void {
     const content = try web.render(allocator, &palette.variants);
     defer allocator.free(content);
-    const path = try std.fs.path.join(allocator, &.{ output_dir, "pale-fire.css" });
+    const path = try std.fs.path.join(allocator, &.{ output_dir, "dark-fire.css" });
     defer allocator.free(path);
 
     if (check) {
@@ -150,7 +150,7 @@ fn checkFile(io: std.Io, allocator: std.mem.Allocator, path: []const u8, expecte
 
 fn printHelp() void {
     std.debug.print(
-        \\Usage: pale-fire [generate|check|list] [options]
+        \\Usage: dark-fire [generate|check|list] [options]
         \\
         \\Options:
         \\  --output PATH    Output root (default: themes)
@@ -161,7 +161,7 @@ fn printHelp() void {
 }
 
 test "argument parsing selects a variant" {
-    const options = try parseArgs(&.{ "pale-fire", "generate", "--variant", "darker", "--output", "out" });
+    const options = try parseArgs(&.{ "dark-fire", "generate", "--variant", "darker", "--output", "out" });
     try std.testing.expectEqual(Command.generate, options.command);
     try std.testing.expectEqualStrings("darker", options.variant.?.slug);
     try std.testing.expectEqualStrings("out", options.output_dir);

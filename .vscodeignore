@@ -1,8 +1,16 @@
 .direnv/**
+.envrc
 .git/**
 .github/**
+.gitignore
 .zig-cache/**
+build.zig
+build.zig.zon
+docs/assets/*.gnuplot
+flake.lock
+flake.nix
 node_modules/**
+src/**
 zig-out/**
 themes/ghostty/**
 themes/web/**

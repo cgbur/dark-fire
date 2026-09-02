@@ -167,23 +167,23 @@ fn originalHighContrastPalette() Palette {
 pub const variants = [_]Variant{
     .{
         .slug = "original",
-        .label = "Pale Fire 01 - Original",
-        .vscode_file = "pale-fire-color-theme.json",
-        .ghostty_file = "Pale Fire 01 - Original",
+        .label = "Dark Fire 01 - Original",
+        .vscode_file = "dark-fire-color-theme.json",
+        .ghostty_file = "Dark Fire 01 - Original",
         .palette = original_palette,
     },
     .{
         .slug = "high-contrast",
-        .label = "Pale Fire 02 - Original High Contrast",
-        .vscode_file = "pale-fire-high-contrast-color-theme.json",
-        .ghostty_file = "Pale Fire 02 - Original High Contrast",
+        .label = "Dark Fire 02 - Original High Contrast",
+        .vscode_file = "dark-fire-high-contrast-color-theme.json",
+        .ghostty_file = "Dark Fire 02 - Original High Contrast",
         .palette = originalHighContrastPalette(),
     },
     .{
         .slug = "stealth",
-        .label = "Pale Fire 03 - Stealth",
-        .vscode_file = "pale-fire-stealth-color-theme.json",
-        .ghostty_file = "Pale Fire 03 - Stealth",
+        .label = "Dark Fire 03 - Stealth",
+        .vscode_file = "dark-fire-stealth-color-theme.json",
+        .ghostty_file = "Dark Fire 03 - Stealth",
         .palette = .{
             .base_foreground_lightness = 0.9,
             .foreground_chroma = 0.03,
@@ -196,9 +196,9 @@ pub const variants = [_]Variant{
     },
     .{
         .slug = "dark",
-        .label = "Pale Fire 04 - Dark",
-        .vscode_file = "pale-fire-dark-color-theme.json",
-        .ghostty_file = "Pale Fire 04 - Dark",
+        .label = "Dark Fire 04 - Dark",
+        .vscode_file = "dark-fire-dark-color-theme.json",
+        .ghostty_file = "Dark Fire 04 - Dark",
         .palette = .{
             .base_foreground_lightness = 0.95,
             .foreground_chroma = 0.01,
@@ -211,9 +211,9 @@ pub const variants = [_]Variant{
     },
     .{
         .slug = "darker",
-        .label = "Pale Fire 05 - Darker",
-        .vscode_file = "pale-fire-darker-color-theme.json",
-        .ghostty_file = "Pale Fire 05 - Darker",
+        .label = "Dark Fire 05 - Darker",
+        .vscode_file = "dark-fire-darker-color-theme.json",
+        .ghostty_file = "Dark Fire 05 - Darker",
         .palette = .{
             .base_foreground_lightness = 0.95,
             .foreground_chroma = 0.01,
@@ -226,9 +226,9 @@ pub const variants = [_]Variant{
     },
     .{
         .slug = "deep-dark",
-        .label = "Pale Fire 06 - Deep Dark",
-        .vscode_file = "pale-fire-deep-dark-color-theme.json",
-        .ghostty_file = "Pale Fire 06 - Deep Dark",
+        .label = "Dark Fire 06 - Deep Dark",
+        .vscode_file = "dark-fire-deep-dark-color-theme.json",
+        .ghostty_file = "Dark Fire 06 - Deep Dark",
         .palette = .{
             .base_foreground_lightness = 0.95,
             .foreground_chroma = 0.01,
@@ -241,9 +241,9 @@ pub const variants = [_]Variant{
     },
     .{
         .slug = "near-black",
-        .label = "Pale Fire 07 - Near Black",
-        .vscode_file = "pale-fire-near-black-color-theme.json",
-        .ghostty_file = "Pale Fire 07 - Near Black",
+        .label = "Dark Fire 07 - Near Black",
+        .vscode_file = "dark-fire-near-black-color-theme.json",
+        .ghostty_file = "Dark Fire 07 - Near Black",
         .palette = .{
             .base_foreground_lightness = 0.95,
             .foreground_chroma = 0.01,
@@ -256,9 +256,9 @@ pub const variants = [_]Variant{
     },
     .{
         .slug = "full-black",
-        .label = "Pale Fire 08 - Full Black",
-        .vscode_file = "pale-fire-full-black-color-theme.json",
-        .ghostty_file = "Pale Fire 08 - Full Black",
+        .label = "Dark Fire 08 - Full Black",
+        .vscode_file = "dark-fire-full-black-color-theme.json",
+        .ghostty_file = "Dark Fire 08 - Full Black",
         .palette = .{
             .base_foreground_lightness = 0.95,
             .foreground_chroma = 0.01,
@@ -330,14 +330,14 @@ test "dark background matches the darker raised surface" {
 
 test "variant identifiers remain ordered" {
     const expected_variants = [_]struct { slug: []const u8, label: []const u8 }{
-        .{ .slug = "original", .label = "Pale Fire 01 - Original" },
-        .{ .slug = "high-contrast", .label = "Pale Fire 02 - Original High Contrast" },
-        .{ .slug = "stealth", .label = "Pale Fire 03 - Stealth" },
-        .{ .slug = "dark", .label = "Pale Fire 04 - Dark" },
-        .{ .slug = "darker", .label = "Pale Fire 05 - Darker" },
-        .{ .slug = "deep-dark", .label = "Pale Fire 06 - Deep Dark" },
-        .{ .slug = "near-black", .label = "Pale Fire 07 - Near Black" },
-        .{ .slug = "full-black", .label = "Pale Fire 08 - Full Black" },
+        .{ .slug = "original", .label = "Dark Fire 01 - Original" },
+        .{ .slug = "high-contrast", .label = "Dark Fire 02 - Original High Contrast" },
+        .{ .slug = "stealth", .label = "Dark Fire 03 - Stealth" },
+        .{ .slug = "dark", .label = "Dark Fire 04 - Dark" },
+        .{ .slug = "darker", .label = "Dark Fire 05 - Darker" },
+        .{ .slug = "deep-dark", .label = "Dark Fire 06 - Deep Dark" },
+        .{ .slug = "near-black", .label = "Dark Fire 07 - Near Black" },
+        .{ .slug = "full-black", .label = "Dark Fire 08 - Full Black" },
     };
 
     for (expected_variants) |expected| {

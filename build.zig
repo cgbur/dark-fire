@@ -11,7 +11,7 @@ pub fn build(b: *std.Build) void {
     });
 
     const exe = b.addExecutable(.{
-        .name = "pale-fire",
+        .name = "dark-fire",
         .root_module = root_module,
     });
     b.installArtifact(exe);

@@ -4,7 +4,7 @@
 /themes/
 /zig-out/
 /*.vsix
-/pale-fire-vscode-themes-*.zip
-/pale-fire-ghostty-themes-*.zip
-/pale-fire-web-themes-*.zip
+/dark-fire-vscode-themes-*.zip
+/dark-fire-ghostty-themes-*.zip
+/dark-fire-web-themes-*.zip
 /.DS_Store

@@ -1,19 +1,19 @@
 {
-  "name": "pale-fire-variants",
-  "displayName": "Pale Fire Variants",
-  "description": "A self-contained Pale Fire theme generator with VS Code, Ghostty, and web outputs",
-  "version": "0.2.0",
+  "name": "dark-fire",
+  "displayName": "Dark Fire",
+  "description": "A self-contained Dark Fire theme generator with VS Code, Ghostty, and web outputs",
+  "version": "0.3.0",
   "publisher": "cgbur",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cgbur/pale-fire.git"
+    "url": "https://github.com/cgbur/dark-fire.git"
   },
   "bugs": {
-    "url": "https://github.com/cgbur/pale-fire/issues"
+    "url": "https://github.com/cgbur/dark-fire/issues"
   },
-  "homepage": "https://github.com/cgbur/pale-fire#readme",
+  "homepage": "https://github.com/cgbur/dark-fire#readme",
   "engines": {
     "vscode": "^1.75.0"
   },
@@ -22,6 +22,7 @@
   ],
   "keywords": [
     "theme",
+    "dark-fire",
     "pale-fire",
     "zenburn",
     "dark",
@@ -41,44 +42,44 @@
   "contributes": {
     "themes": [
       {
-        "label": "Pale Fire 01 - Original",
+        "label": "Dark Fire 01 - Original",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-color-theme.json"
+        "path": "./themes/vscode/dark-fire-color-theme.json"
       },
       {
-        "label": "Pale Fire 02 - Original High Contrast",
+        "label": "Dark Fire 02 - Original High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-high-contrast-color-theme.json"
+        "path": "./themes/vscode/dark-fire-high-contrast-color-theme.json"
       },
       {
-        "label": "Pale Fire 03 - Stealth",
+        "label": "Dark Fire 03 - Stealth",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-stealth-color-theme.json"
+        "path": "./themes/vscode/dark-fire-stealth-color-theme.json"
       },
       {
-        "label": "Pale Fire 04 - Dark",
+        "label": "Dark Fire 04 - Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-dark-color-theme.json"
+        "path": "./themes/vscode/dark-fire-dark-color-theme.json"
       },
       {
-        "label": "Pale Fire 05 - Darker",
+        "label": "Dark Fire 05 - Darker",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-darker-color-theme.json"
+        "path": "./themes/vscode/dark-fire-darker-color-theme.json"
       },
       {
-        "label": "Pale Fire 06 - Deep Dark",
+        "label": "Dark Fire 06 - Deep Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-deep-dark-color-theme.json"
+        "path": "./themes/vscode/dark-fire-deep-dark-color-theme.json"
       },
       {
-        "label": "Pale Fire 07 - Near Black",
+        "label": "Dark Fire 07 - Near Black",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-near-black-color-theme.json"
+        "path": "./themes/vscode/dark-fire-near-black-color-theme.json"
       },
       {
-        "label": "Pale Fire 08 - Full Black",
+        "label": "Dark Fire 08 - Full Black",
         "uiTheme": "vs-dark",
-        "path": "./themes/vscode/pale-fire-full-black-color-theme.json"
+        "path": "./themes/vscode/dark-fire-full-black-color-theme.json"
       }
     ]
   }
