@@ -6,6 +6,8 @@ Dark Fire is based on [matklad's Pale Fire](https://github.com/matklad/pale-fire
 
 The palette and its variants live in one place. Each backend only maps those colors into its target format, making it straightforward to add more outputs later.
 
+Try all eight variants in the [interactive preview](https://cgbur.com/dark-fire/), then read about the choices behind the project in [the accompanying post](https://cgbur.com/posts/dark-fire/).
+
 One goal of this project is to make the darker end of the Pale Fire palette feel more deliberate across applications. The upstream themes leave some large perceptual jumps between backgrounds, while editor and terminal versions of a theme can feel noticeably different. Dark Fire adds more closely spaced dark options and generates every target from the same palette so VS Code, Ghostty, and the web stay visually aligned.
 
 ## Install
